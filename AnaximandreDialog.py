@@ -3,7 +3,7 @@
 /***************************************************************************
 Anaximandre
 								 A QGIS plugin
- Génération de couches vectorielles de Polygone, Lignes et Points en 3D shp
+ A plugin for auto drawing 3D Shapefiles from topographical survey. 
 							 -------------------
 		begin                : 2016-01
 		copyright            : 2017 F.Fouriaux - Eveha
@@ -32,6 +32,7 @@ from qgis.core import *
 from qgis.gui import *
 import ntpath
 
+localelang = QSettings().value('locale/userLocale')[0:2]
 
 def selectLayer(layerName):
 	layers=iface.legendInterface().layers()
@@ -48,9 +49,12 @@ class AnaxDialg(QDialog):
 	def __init__(self):
 		QDialog.__init__(self)
 	
-	# Affichage du formatage attendu    
+	# Show the structuration of the csv file needed   
 	def listeCodes(self):
-		codif=['Num : numéro de point','X : coordonnée Est','Y : coordonnée Nord','Z: altitude','US : champ de regroupement','Desc : decription','Code : géométrie', 'Code2 : diametre(option)']
+		if localelang =='fr':
+			codif=['Num : numéro de point','X : coordonnée Est','Y : coordonnée Nord','Z: altitude','US : champ de regroupement','Desc : decription','Code : géométrie', 'Code2 : diametre(option)']
+		else: 
+			codif=['Num : id of the point','X : east coordinate', 'Y : north Coordinate','Z : altitude','US : grouping field','Desc : description','Code : geometry', 'Code2 : diameter (optional)']
 		for n in codif:
 			self.listCodes.addItem(n)
 		
@@ -98,41 +102,6 @@ class AnaxDialg(QDialog):
 		AjoutLayer(fileName[0]) 
 		self.layerList()
 
-
-	def outFile(self):
-		"""Opens a file save dialog and sets the output file path."""
-		
-		outFilePath = saveFileDialog(self)
-		if not outFilePath:
-			return
-		self.setOutFilePath(outFilePath)
-	
-	def getOutputFilePath(self):
-		"""Returns the output file path."""
-		
-		return self.outFileLine.text()
-
-	def setOutFilePath(self, outFilePath):
-		"""Sets the output file path."""
-		
-		self.outFileLine.setText(outFilePath)
-		
-	def groupAttrName(self):
-		"""Returns the name of the grouping attribute."""
-		
-		if self.chkBoxFieldGroup.isChecked():
-			return unicode(self.comboGroup.currentText()) 
-		
-	def outputEncoding(self):
-		"""Returns the selected encoding for the output Shapefile."""
-		
-		return unicode(self.comboEncoding.currentText())
-	
-	def getGeoChoiceAttr(self):
-		"""Returns the name of the 'geometry choice' attribute """
-		
-		return unicode(self.comboGeoChoice.currentText())
-	
 	# adopted from 'points2one Plugin'
 	# Copyright (C) 2010 Pavol Kapusta
 	# Copyright (C) 2010, 2013 Goyo

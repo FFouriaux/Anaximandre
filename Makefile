@@ -40,15 +40,17 @@ SOURCES = \
 	__init__.py \
 	Anaximandre.py Anaximandre_dialog.py
 
+TRANSLATIONS = i18n/Anaximandre_fr_en.ts 
+
 PLUGINNAME = Anaximandre
 
 PY_FILES = \
 	__init__.py \
-	Anaximandre.py Anaximandre_dialog.py
+	Anaximandre.py Anaximandre_dialog.py AnaximandreDialog.py Auto3dShp.py
 
 UI_FILES = Anaximandre_dialog_base.ui
 
-EXTRAS = metadata.txt icon.png
+EXTRAS = metadata.txt icon.png help.svg
 
 EXTRA_DIRS =
 

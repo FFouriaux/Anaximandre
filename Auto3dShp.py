@@ -33,6 +33,8 @@ import csv
 # # create automaticaly 3D polygon with a csv file from topographic survey
 # # engine of Anaximandre
 
+
+
 def Auto3DShp(CSV,Shape3D):
 
 	# Creation des fichiers de sortie
@@ -262,3 +264,7 @@ def Auto3DShp(CSV,Shape3D):
 	QgsMapCanvas().setLayerSet([QgsMapCanvasLayer(layer3)])
 	QgsMapCanvas().setLayerSet([QgsMapCanvasLayer(layer4)])
 	QgsMapCanvas().setLayerSet([QgsMapCanvasLayer(layer5)])
+	
+
+
+

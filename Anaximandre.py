@@ -29,6 +29,7 @@ from qgis.core import *
 import resources
 # Import the code for the dialog
 from Anaximandre_dialog import AnaximandreDialog
+# Import the engine for drawing
 from Auto3dShp import Auto3DShp
 import os.path
 import urllib
@@ -166,14 +167,30 @@ class Anaximandre:
 	def initGui(self):
 		"""Create the menu entries and toolbar icons inside the QGIS GUI."""
 
-		icon_path = ':/plugins/Anaximandre/icon.png'
+		icon_path = ":/plugins/Anaximandre/icon.png"
 		self.add_action(
 			icon_path,
 			text=self.tr(u'Auto Drawing 3DShp'),
 			callback=self.run,
 			parent=self.iface.mainWindow())
+			
+		iconHelp= ':/plugins/Anaximandre/help.svg'
+		print self.tr(u'help')
+		self.add_action(
+			iconHelp,
+			text=self.tr(u'help'),
+			callback=self.help,
+			parent=self.iface.mainWindow())
 
-
+	def help(self):
+		if QCoreApplication.translate(u"Anaximandre", "help") == "aide":
+			help_file = "file:///{}/help/build/html/fr/index.html".format(os.path.dirname(__file__))
+		else:
+			help_file = "file:///{}/help/build/html/en/index.html".format(os.path.dirname(__file__)) 
+		QDesktopServices().openUrl(QUrl(help_file))
+		
+		
+		
 	def unload(self):
 		"""Removes the plugin menu item and icon from QGIS GUI."""
 		for action in self.actions:
@@ -203,10 +220,10 @@ class Anaximandre:
 			for layer in self.iface.legendInterface().layers():
 				if layer.name() == self.dlg.cbox_FichierCsv.currentText():
 					a= layer.publicSource()
-					b=str(a.split('?')[0])
-					csvPath=urllib.unquote(b)[7:]
-			print sortie
+					if a[0] =='/':
+						csvPath=a
+					else:
+						b=str(a.split('?')[0])
+						csvPath=urllib.unquote(b)[7:]
 			Auto3DShp(csvPath,sortie)
-			# Do something useful here - delete the line containing pass and
-			# substitute with your code.
 			pass
