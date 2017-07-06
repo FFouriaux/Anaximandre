@@ -16,7 +16,7 @@ email=francois.fouriaux@eveha.fr
 
 about=Dessin automatisé de shapeFile 3D à partir de fichiers csv au format Num,X,Y,Z,Desc1,Desc2,Code.
 
-tracker=https://github.com/FFouriauxEveha/Anaximandre
+tracker=https://github.com/FFouriauxEveha/Anaximandre/issues
 repository=https://github.com/FFouriauxEveha/Anaximandre
 # End of mandatory metadata
 
