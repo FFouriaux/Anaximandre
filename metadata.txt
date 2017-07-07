@@ -10,7 +10,7 @@
 name=Anaximandre
 qgisMinimumVersion=2.0
 description=A plugin for auto drawing 3D Shapefiles from topographical survey.  
-version=0.1
+version=1.0
 author=F.Fouriaux/ Eveha
 email=francois.fouriaux@eveha.fr
 
