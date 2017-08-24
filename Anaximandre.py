@@ -220,10 +220,10 @@ class Anaximandre:
 			for layer in self.iface.legendInterface().layers():
 				if layer.name() == self.dlg.cbox_FichierCsv.currentText():
 					a= layer.publicSource()
-					if a[0] =='/':
-						csvPath=a
-					else:
+					if a[0:5] =='file:':
 						b=str(a.split('?')[0])
 						csvPath=urllib.unquote(b)[7:]
+					else:
+						csvPath=a
 			Auto3DShp(csvPath,sortie)
 			pass
