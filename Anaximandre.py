@@ -223,7 +223,12 @@ class Anaximandre:
 					if a[0:5] =='file:':
 						b=str(a.split('?')[0])
 						csvPath=urllib.unquote(b)[7:]
+						if os.name=='nt':
+							csvPath=csvPath[1:]
 					else:
 						csvPath=a
+						if os.name=='nt':
+							csvPath=csvPath[1:]
+						
 			Auto3DShp(csvPath,sortie)
 			pass

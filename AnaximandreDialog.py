@@ -41,8 +41,11 @@ def selectLayer(layerName):
 			return l
 
 def AjoutLayer(fileName):
+	if os.name=='nt':
+		fileName='/'+fileName
 	nom= ntpath.basename(fileName)
 	iface.addVectorLayer(fileName,nom,"delimitedtext")
+
 
 
 class AnaxDialg(QDialog):
