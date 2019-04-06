@@ -6,6 +6,7 @@
  A plugin for auto drawing 3D Shapefiles from topographical survey.  
 							 -------------------
 		begin                : 2017-06-16
+		new version          : 2019-04-04
 		git sha              : $Format:%H$
 		copyright            : (C) 2017 by F.Fouriaux/ Eveha
 		email                : francois.fouriaux@eveha.fr
@@ -23,10 +24,10 @@
 
 import os
 
-from PyQt4 import QtGui, uic
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-from AnaximandreDialog import*
+from PyQt5 import QtWidgets, uic
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from .AnaximandreDialog import*
 
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
@@ -45,9 +46,12 @@ class AnaximandreDialog(AnaxDialg, FORM_CLASS):
 		self.setupUi(self)
 		self.layerList()
 		self.listeCodes()
-		QObject.connect(self.pushButton, SIGNAL('clicked()'),self.selectDirectory)
-		QObject.connect(self.pushButton_2, SIGNAL('clicked()'),self.OpenCsv)
-		QObject.connect(self.cbox_FichierCsv, SIGNAL('currentIndexChanged(QString)'), self.updateFieldCombos)
+		self.pushButton.clicked.connect(self.selectDirectory)
+		self.pushButton_2.clicked.connect(self.OpenCsv)
+		self.cbox_FichierCsv.currentIndexChanged.connect(self.updateFieldCombos)
+		#QObject.connect(self.pushButton, SIGNAL('clicked()'),self.selectDirectory)
+		#QObject.connect(self.pushButton_2, SIGNAL('clicked()'),self.OpenCsv)
+		#QObject.connect(self.cbox_FichierCsv, SIGNAL('currentIndexChanged(QString)'), self.updateFieldCombos)
 		localLang = QSettings().value('locale/userLocale')[0:2]
 		if localLang != 'fr':
 			self.label_FichierCsv.setText('Csv File')
