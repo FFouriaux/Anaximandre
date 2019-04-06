@@ -35,7 +35,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="#">Anaximandre 0.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="#">Anaximandre 0.2 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -51,7 +51,7 @@
 </div>
 <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>The Anaximandre plugin enables the creation of 3D polygon,&nbsp;line and point shapefiles (.shp) from a points layer in csv format.
+<p>The Anaximandre plugin enables the creation of 3D polygon,&nbsp;line and point geopackage files (.gpkg) from a points layer in csv format.
 The points must include, in addition to their coordinates, descriptive values which allow them to be grouped, and a code value which defines the geometry to be generated.
 The codes are:</p>
 <ul class="simple">
@@ -62,6 +62,7 @@ The codes are:</p>
 <li>For an isolated artefact : ‘iso’</li>
 <li>For a DEM point : ‘pt mnt’</li>
 <li>For a circle : ‘c’, followed by its diameter in meters</li>
+<li>For a circle from two points: ‘c2pt’</li>
 </ul>
 <p>The order of the points in the file must follow a few rules:</p>
 <ul class="simple">
@@ -101,8 +102,7 @@ The codes are:</p>
 </div>
 <div class="section" id="about">
 <h1>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h1>
-<p>Design/Developpement: F. Fouriaux
-Test : R. Lacey et B. Hollemaert
+<p>Design & Developpement: F. Fouriaux --
 Translation : R. Lacey</p>
 <hr class="docutils" />
 </div>
@@ -157,7 +157,7 @@ Translation : R. Lacey</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2017, F. Fouriaux / Eveha.
+        &#169; Copyright 2019, F. Fouriaux.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
     </div>
   </body>
