@@ -51,7 +51,7 @@
 </div>
 <div class="section" id="presentation">
 <h1>Présentation<a class="headerlink" href="#presentation" title="Permalink to this headline">¶</a></h1>
-<p>Le plugin Anaximandre permet de générer à partir d’une couche de points au format csv des couches shapefiles (.shp) 3D de polygones, lignes et points.</p>
+<p>Le plugin Anaximandre permet de générer à partir d’une couche de points au format csv des couches geopackage (.gpkg) 3D de polygones, lignes et points.</p>
 <p>Les points doivent comporter en plus de leurs coordonnées des valeurs descriptives permettant de les regrouper et une valeur de code définissant la géométrie à générer.</p>
 <p>Ces codes sont:</p>
 <ul class="simple">
@@ -62,6 +62,7 @@
 <li>Pour un point d’isolat : ‘iso’</li>
 <li>Pour un point de mnt : ‘pt mnt’</li>
 <li>Pour un cercle : ‘c,’ suivi de son diamètre en mètre</li>
+<li>Pour un cercle à partir de deux points : ‘c2pt’</li>
 </ul>
 <p>L’ordre des points dans le fichier doit respecter quelques règles:</p>
 <ul class="simple">
@@ -99,8 +100,7 @@
 </div>
 <div class="section" id="credits">
 <h1>Crédits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h1>
-<p>Conception/réalisation: F. Fouriaux
-Test : R. Lacey et B. Hollemaert
+<p>Conception & réalisation: F. Fouriaux --
 Traduction : R. Lacey</p>
 <hr class="docutils" />
 </div>
@@ -155,7 +155,7 @@ Traduction : R. Lacey</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2017, F. Fouriaux / Eveha.
+        &#169; Copyright 2019, F. Fouriaux
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
     </div>
   </body>
