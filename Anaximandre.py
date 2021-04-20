@@ -6,6 +6,7 @@
  A plugin for auto drawing 3D Shapefiles from topographical survey.  
 							  -------------------
 		begin                : 2017-06-16
+		new version          : 2021-04-16
 		git sha              : $Format:%H$
 		copyright            : (C) 2017 by F.Fouriaux/ Eveha
 		email                : francois.fouriaux@eveha.fr
@@ -21,18 +22,21 @@
  ***************************************************************************/
 """
 
-
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-from qgis.core import *
-# Initialize Qt resources from file resources.py
-import resources
-# Import the code for the dialog
-from Anaximandre_dialog import AnaximandreDialog
-# Import the engine for drawing
-from Auto3dShp import Auto3DShp
 import os.path
 import urllib
+
+from qgis.core import QgsProject, QgsMapLayer, QgsWkbTypes
+from PyQt5.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, Qt, QUrl
+from PyQt5.QtGui import QIcon, QDesktopServices
+from PyQt5.QtWidgets import QAction
+
+# Initialize Qt resources from file resources.py
+from .resources import *
+# Import the code for the dialog
+from .Anaximandre_dialog import AnaximandreDialog
+# Import the engine for drawing
+from .Auto3dShp import Auto3DShp
+
 
 
 class Anaximandre:
@@ -175,7 +179,6 @@ class Anaximandre:
 			parent=self.iface.mainWindow())
 			
 		iconHelp= ':/plugins/Anaximandre/help.svg'
-		print self.tr(u'help')
 		self.add_action(
 			iconHelp,
 			text=self.tr(u'help'),
@@ -217,12 +220,13 @@ class Anaximandre:
 		if result:
 			csvPath=''
 			sortie=self.dlg.lineEdit.text()
-			for layer in self.iface.legendInterface().layers():
+			layers=[layer for layer in QgsProject.instance().mapLayers().values()]
+			for layer in layers:
 				if layer.name() == self.dlg.cbox_FichierCsv.currentText():
 					a= layer.publicSource()
 					if a[0:5] =='file:':
 						b=str(a.split('?')[0])
-						csvPath=urllib.unquote(b)[7:]
+						csvPath=urllib.parse.unquote(b)[7:]
 						if os.name=='nt':
 							csvPath=csvPath[1:]
 					else:

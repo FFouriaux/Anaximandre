@@ -6,6 +6,7 @@ Anaximandre
  A plugin for auto drawing 3D Shapefiles from topographical survey. 
 							 -------------------
 		begin                : 2016-01
+		new version          : 2019-04-04
 		copyright            : 2017 F.Fouriaux - Eveha
 		email                : francois.fouriaux@eveha.fr
  ***************************************************************************/
@@ -25,17 +26,19 @@ from __future__ import unicode_literals
 
 import os
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import QDialog, QFileDialog
 from qgis.utils import *
 from qgis.core import *
 from qgis.gui import *
 import ntpath
+import pathlib
 
 localelang = QSettings().value('locale/userLocale')[0:2]
 
 def selectLayer(layerName):
-	layers=iface.legendInterface().layers()
+	layers=[layer for layer in QgsProject.instance().mapLayers().values()]
 	for l in layers:
 		if l.name() == layerName:
 			return l
@@ -43,8 +46,9 @@ def selectLayer(layerName):
 def AjoutLayer(fileName):
 	if os.name=='nt':
 		fileName='/'+fileName
+	fileUri= pathlib.Path(fileName).as_uri()
 	nom= ntpath.basename(fileName)
-	iface.addVectorLayer(fileName,nom,"delimitedtext")
+	iface.addVectorLayer(fileUri,nom,"delimitedtext")
 
 
 
@@ -64,7 +68,7 @@ class AnaxDialg(QDialog):
 	 
 	# list of layers 'csv' already charged in the interface   
 	def layerList(self):
-		layers = iface.legendInterface().layers()
+		layers = [layer for layer in QgsProject.instance().mapLayers().values()]
 		layer_list = []
 		self.cbox_FichierCsv.clear()
 		for layer in layers:
@@ -113,7 +117,7 @@ class AnaxDialg(QDialog):
 		logMsg = '\n'.join(engine.getLogger())
 		if logMsg:
 			warningBox = QMessageBox(self)
-			warningBox.setWindowTitle('ArcheOCAD')
+			warningBox.setWindowTitle('Anaximandre')
 			message = QtGui.QApplication.translate("SDialog","Output Shapefile created.", None, QtGui.QApplication.UnicodeUTF8)
 			warningBox.setText(message)
 			message = QtGui.QApplication.translate("SDialog","There were some issues, maybe some features could not be created.", None, QtGui.QApplication.UnicodeUTF8)
@@ -130,7 +134,7 @@ class AnaxDialg(QDialog):
 		message = '\n'.join([message, unicode(self.getOutputFilePath())])
 		message = '\n'.join([message,
 			unicode(QtGui.QApplication.translate("SDialog","Would you like to add the new layer to your project?", None, QtGui.QApplication.UnicodeUTF8))])
-		addToTOC = QMessageBox.question(self, "ArcheoCAD", message,
+		addToTOC = QMessageBox.question(self, "Anaximandre", message,
 			QMessageBox.Yes, QMessageBox.No, QMessageBox.NoButton)
 		if addToTOC == QMessageBox.Yes:
 			Utilities.addShapeToCanvas(unicode(self.getOutputFilePath()))
