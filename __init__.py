@@ -6,6 +6,7 @@
  A plugin for auto drawing 3D Shapefiles from topographical survey.  
                              -------------------
         begin                : 2017-06-16
+        new version          : 2021-04-16
         copyright            : (C) 2017 by F.Fouriaux/ Eveha
         email                : francois.fouriaux@eveha.fr
         git sha              : $Format:%H$

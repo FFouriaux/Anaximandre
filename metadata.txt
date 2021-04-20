@@ -8,16 +8,17 @@
 
 [general]
 name=Anaximandre
-qgisMinimumVersion=2.0
+qgisMinimumVersion=2.99
+qgisMaximumVersion=3.99
 description=A plugin for auto drawing 3D Shapefiles from topographical survey.  
-version=1.0
-author=F.Fouriaux/ Eveha
+version=1.2
+author=F.Fouriaux Eveha
 email=francois.fouriaux@eveha.fr
 
 about=Dessin automatisé de shapeFile 3D à partir de fichiers csv au format Num,X,Y,Z,Desc1,Desc2,Code.
 
 tracker=https://github.com/FFouriauxEveha/Anaximandre/issues
-repository=https://github.com/FFouriauxEveha/Anaximandre
+repository=https://github.com/FFouriauxEveha/Anaximandre/tree/Anaximandre_Qgs3
 # End of mandatory metadata
 
 # Recommended items:
@@ -32,7 +33,7 @@ homepage=https://github.com/FFouriauxEveha/Anaximandre
 category=Vector
 icon=icon.png
 # experimental flag
-experimental=True
+experimental=False
 
 # deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False

@@ -25,11 +25,13 @@ Ces codes sont:
 * Pour un point d'isolat : 'iso'
 * Pour un point de mnt : 'pt mnt'
 * Pour un cercle : 'c,' suivi de son diamètre en mètre
+*Pour une ellipse à partir de trois points : ‘e’
 
 L'ordre des points dans le fichier doit respecter quelques règles: 
 
 * Les points doivent suivre le tracé de la ligne ou du polygone voulu
 * Pour les cercles, le centre du cercle sera utilisé
+* Pour une ellipse, le premier point doit être le centre, suivi d'un point sur le grand axe et d'un autre sur le petit axe
 * Pour les mnt, pas d'ordre particulier
 
 Le résultat sera un ensemble de couches comportant les entités en 3D ainsi que les attributs suivants: 

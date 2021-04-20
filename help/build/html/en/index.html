@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Documentation for the Anaximandre plugin &#8212; Anaximandre 1.0 documentation</title>
+    <title>Documentation for the Anaximandre plugin &#8212; Anaximandre 1.2 documentation</title>
     
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.0',
+        VERSION:     '1.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -35,7 +35,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="#">Anaximandre 0.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="#">Anaximandre 1.2 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -51,7 +51,7 @@
 </div>
 <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>The Anaximandre plugin enables the creation of 3D polygon,&nbsp;line and point shapefiles (.shp) from a points layer in csv format.
+<p>The Anaximandre plugin enables the creation of 3D polygon,&nbsp;line and point geopackage files (.gpkg) from a points layer in csv format.
 The points must include, in addition to their coordinates, descriptive values which allow them to be grouped, and a code value which defines the geometry to be generated.
 The codes are:</p>
 <ul class="simple">
@@ -62,11 +62,13 @@ The codes are:</p>
 <li>For an isolated artefact : ‘iso’</li>
 <li>For a DEM point : ‘pt mnt’</li>
 <li>For a circle : ‘c’, followed by its diameter in meters</li>
-</ul>
+<li>For a circle from two points: ‘c2pt’</li>
+<li>For an ellipse from three points: ‘e’</li>
 <p>The order of the points in the file must follow a few rules:</p>
 <ul class="simple">
 <li>The points must follow the outline of the intended line or polygon</li>
 <li>For circles, the center of the circle will be used</li>
+<li>For ellipses, the first point is the center and one point on the major axis and an other on the minor axis</li>
 <li>For DEMs, there is no particular order</li>
 </ul>
 <p>The result will be a group of layers containing 3D entities as well as the following attributes:</p>
@@ -97,12 +99,11 @@ The codes are:</p>
 <div class="section" id="source">
 <h1>Source<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h1>
 <p>The source code can be found at the following address:</p>
-<p><a class="reference external" href="https://github.com/FFouriauxEveha/Anaximandre">https://github.com/FFouriauxEveha/Anaximandre</a></p>
+<p><a class="reference external" href="https://github.com/FFouriauxEveha/Anaximandre_Qgis3">https://github.com/FFouriauxEveha/Anaximandre/tree/Anaximandre_Qgs3</a></p>
 </div>
 <div class="section" id="about">
 <h1>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h1>
-<p>Design/Developpement: F. Fouriaux
-Test : R. Lacey et B. Hollemaert
+<p>Design & Developpement: F. Fouriaux --
 Translation : R. Lacey</p>
 <hr class="docutils" />
 </div>
@@ -114,7 +115,7 @@ Translation : R. Lacey</p>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="#">
-              <img class="logo" src="" alt=""/>
+              <img class="logo" src="static/en tete eveha_Innov.png" alt="Logo"/>
             </a></p>
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
@@ -153,11 +154,11 @@ Translation : R. Lacey</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="#">Anaximandre 1.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="#">Anaximandre 1.2 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2017, F. Fouriaux / Eveha.
+        &#169; Copyright 2021, F. Fouriaux.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.
     </div>
   </body>

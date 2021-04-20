@@ -23,11 +23,13 @@ The codes are:
 * For an isolated artefact : 'iso'
 * For a DEM point : 'pt mnt'
 * For a circle : 'c', followed by its diameter in meters
+* For an ellipse from three points: ‘e’
 
 The order of the points in the file must follow a few rules: 
 
 * The points must follow the outline of the intended line or polygon
 * For circles, the center of the circle will be used
+* For ellipses, the first point is the center and one point on the major axis and an other on the minor axis
 * For DEMs, there is no particular order
 
 The result will be a group of layers containing 3D entities as well as the following attributes: 
